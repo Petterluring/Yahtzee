@@ -1,2 +1,0 @@
-{"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\QYahtzee\nYahtzee is a game where you throw 5 6-sided dice and collect points, were the points are dependent on dice patterns.\\E$"}
-{"rule":"ONES","sentence":"^\\QThe possible patterns with points are the following:\nOnes Any die set containing ones.\\E$"}
