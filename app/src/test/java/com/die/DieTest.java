@@ -1,17 +1,23 @@
 package com.die;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 public class DieTest {
-    private final Die die = new Die();
+    private final Die die = new Die(6);
 
     @Test
     void dieCanBeInitialized() {
         int faceValue = die.getFaceValue();
         assertTrue(faceValue >= 1 && faceValue <= 6);
+    }
+
+    @Test
+    void dieHasCorrectAmountOfSides() {
+        assertEquals(6, die.getSides());
     }
 
     @Test
