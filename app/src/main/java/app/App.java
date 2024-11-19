@@ -10,7 +10,6 @@ import com.player.Player;
 public class App {
 
     public static void main(String[] args) {
-        Player person = new Player("Richard");
 
     }
 }
