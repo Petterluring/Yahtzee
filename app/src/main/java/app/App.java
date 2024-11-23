@@ -16,7 +16,7 @@ import com.points.Points;
 public class App {
 
     public static void main(String[] args) {
-        Points points = new Points(new int[]{1, 2, 3, 4, 5});
-        System.out.println(points.straight(false));
+        Points points = new Points(new int[]{6, 2, 2, 2, 2});
+        System.out.println(points.onesToSixes(6));
     }
 }

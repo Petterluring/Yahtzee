@@ -59,8 +59,8 @@ public class Points {
      */
     private int sumOfFaceValues() {
         int sum = 0;
-        for (int value : faceCounter.keySet()) {
-            sum += value;
+        for (int key : faceCounter.keySet()) {
+            sum += key * faceCounter.get(key);
         }
         return sum;
     }
@@ -71,22 +71,19 @@ public class Points {
      * E.g. the faceValues {2, 2, 2, 2, 3} will return 2*4=8 points if the parameter
      * faceValue is set to 2.
      * @param faceValue - Chosen face value.
-     * @return - Returns the sum. Returns 0 if parameter faceValue is not found in the faceCounter.
+     * @return - Returns the point. Returns 0 if parameter faceValue is not found in the faceCounter.
      * @throws IllegalArgumentException - A face value must stay in range between 1 and 6.
      */
     public int onesToSixes(int faceValue) throws IllegalArgumentException {
         if (faceValue < 1 || faceValue > 6) {
             throw new IllegalArgumentException(faceValueError);
         }
-        Iterator<Map.Entry<Integer, Integer>> iterator = faceCounter.entrySet().iterator();
-        do {
-            Entry<Integer, Integer> entry = iterator.next();
-            if (entry.getKey() == faceValue) {
-                return entry.getKey() * entry.getValue();
+        for (int key : faceCounter.keySet()) {
+            if (key == faceValue) {
+                return key * faceCounter.get(key);
             }
-
-        } while(iterator.hasNext());
-
+            
+        }
         return 0;
     }
 
@@ -101,32 +98,56 @@ public class Points {
             return 0;
         }
         int highestFaceValue = 0;
-        Iterator<Map.Entry<Integer, Integer>> iterator = faceCounter.entrySet().iterator();
-        do {
-            Entry<Integer, Integer> entry = iterator.next();
-            if (entry.getKey() > highestFaceValue && entry.getValue() > 1) {
-                highestFaceValue = entry.getKey();
+        for (int key : faceCounter.keySet()) {
+            if (key > highestFaceValue && faceCounter.get(key) > 1) {
+                highestFaceValue = key;
             }
-        } while(iterator.hasNext());
+        }
         return highestFaceValue * 2;
     }
 
-    public boolean isTwoPair() {
-        return true;
+    public int isTwoPair() {
+        if (faceCounter.size() == 1 || faceCounter.size() >= 4) {
+            return 0;
+        }
+        int sum = 0;
+        for (int key : faceCounter.keySet()) {
+            int value = faceCounter.get(key);
+            if (value == 2 || value == 3) {
+                sum += key * 2;
+            }
+        }
+        return sum;
     }
 
-    public boolean isThreeOfAKind() {
-        return true;
+    public int isThreeOfAKind() {
+        if (faceCounter.size() > 3) {
+            return 0;
+        }
+        for (int key : faceCounter.keySet()) {
+            if (faceCounter.get(key) >= 3) {
+                return key * 3;
+            }
+        }
+        return 0;
     }
 
-    public boolean isFourOfAkind() {
-        return true;
+    public int fourOfAKind() {
+        if (faceCounter.size() > 2) {
+            return 0;
+        }
+        for (int key : faceCounter.keySet()) {
+            if (faceCounter.get(key) >= 4) {
+                return key * 4;
+            }
+        }
+        return 0;
     }
 
     /**
-     * Calculates 
-     * @param big
-     * @return
+     * Returns the point of big or small straight.
+     * @param big - Big or small straight?
+     * @return - ...
      */
     public int straight(boolean big) {
         if (faceCounter.size() != 5) {
@@ -143,11 +164,19 @@ public class Points {
         return point;
     }
 
+    /**
+     * Returns the point of a full house.
+     * @return - Returns point for full house. Returns 0 if no full house.
+     */
     public int fullHouse() {
         if (faceCounter.size() != 2) {
             return 0;
         }
-
+        for (int value : faceCounter.values()) {
+            if (value == 2 || value == 3) {
+                return sumOfFaceValues();
+            }
+        }
         return 0;
     }
 
