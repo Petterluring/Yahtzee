@@ -1,26 +1,24 @@
 package com.points;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 /**
- * This class calculates the different points for a given pattern. 
- * Remark that a pattern can have different amount of points depending on 
+ * This class calculates the different points for a given pattern.
+ * Remark that a pattern can have different amount of points depending on
  * the face values.
  */
 public class Points {
     /**
-     * Keeps track of the occurences of each face value for a set 
+     * Keeps track of the occurences of each face value for a set
      * of 5 dice.
      */
     private HashMap<Integer, Integer> faceCounter;
     private static final String faceValueError = "Dice set must contain face values between 1 and 6";
 
     /**
-     * The constructor initializes this class by counting the 
+     * The constructor initializes this class by counting the
      * occurrences of each faceValue and save it in faceCounter variable.
+     * 
      * @param dice - Chosen set of dice
      * @throws IllegalArgumentException - Dice set must be of lenght 5
      */
@@ -38,6 +36,7 @@ public class Points {
 
     /**
      * Counts the occurences of each face value
+     * 
      * @param faceValues - Array of face values
      * @return - Returns a hashmap which keeps track of the occurrences
      */
@@ -55,6 +54,7 @@ public class Points {
 
     /**
      * Calculates and returns the sum of the face values.
+     * 
      * @return ...
      */
     private int sumOfFaceValues() {
@@ -66,13 +66,16 @@ public class Points {
     }
 
     /**
-     * Returns the points for ones, twos, ..., sixes. The user chooses which face value the method should
-     * return points for.
+     * Returns the points for ones, twos, ..., sixes. The user chooses which face
+     * value the method should return points for.
      * E.g. the faceValues {2, 2, 2, 2, 3} will return 2*4=8 points if the parameter
      * faceValue is set to 2.
+     * 
      * @param faceValue - Chosen face value.
-     * @return - Returns the point. Returns 0 if parameter faceValue is not found in the faceCounter.
-     * @throws IllegalArgumentException - A face value must stay in range between 1 and 6.
+     * @return - Returns the point. Returns 0 if parameter faceValue is not found in
+     *         the faceCounter.
+     * @throws IllegalArgumentException - A face value must stay in range between 1
+     *                                  and 6.
      */
     public int onesToSixes(int faceValue) throws IllegalArgumentException {
         if (faceValue < 1 || faceValue > 6) {
@@ -82,15 +85,15 @@ public class Points {
             if (key == faceValue) {
                 return key * faceCounter.get(key);
             }
-            
+
         }
         return 0;
     }
 
-
     /**
-     * Returns the point of the highest pair in the dice set. 
+     * Returns the point of the highest pair in the dice set.
      * Returns 0 if there is no pair.
+     * 
      * @return ...
      */
     public int pair() {
@@ -106,7 +109,11 @@ public class Points {
         return highestFaceValue * 2;
     }
 
-    public int isTwoPair() {
+    /**
+     * Returns the point of a two pair. Returns 0 if there is no two pair.
+     * @return - ...
+     */
+    public int twoPair() {
         if (faceCounter.size() == 1 || faceCounter.size() >= 4) {
             return 0;
         }
@@ -120,8 +127,12 @@ public class Points {
         return sum;
     }
 
-    public int isThreeOfAKind() {
-        if (faceCounter.size() > 3) {
+    /**
+     * Calculates the point of a three of a kind. Returns 0 if there is none.
+     * @return - ...
+     */
+    public int threeOfAKind() {
+        if (faceCounter.size() >= 4) {
             return 0;
         }
         for (int key : faceCounter.keySet()) {
@@ -132,6 +143,10 @@ public class Points {
         return 0;
     }
 
+    /**
+     * Calculates the point of a four of a kind. Returns 0 if there is none.
+     * @return - ...
+     */
     public int fourOfAKind() {
         if (faceCounter.size() > 2) {
             return 0;
@@ -146,6 +161,7 @@ public class Points {
 
     /**
      * Returns the point of big or small straight.
+     * 
      * @param big - Big or small straight?
      * @return - ...
      */
@@ -165,8 +181,8 @@ public class Points {
     }
 
     /**
-     * Returns the point of a full house.
-     * @return - Returns point for full house. Returns 0 if no full house.
+     * Calculates the point of a full house. Returns 0 if none.
+     * @return - ...
      */
     public int fullHouse() {
         if (faceCounter.size() != 2) {
@@ -180,17 +196,29 @@ public class Points {
         return 0;
     }
 
-    public int isYatzhee() {
-        if (faceCounter.size() < 5) {
+    /**
+     * Calculates the point of a Yahtzee. Returns 0 if none.
+     * @return - ...
+     */
+    public int Yahtzee() {
+        if (faceCounter.size() != 1) {
             return 0;
         }
         return 50;
     }
 
-    public int isChance() {
+    /**
+     * Calculates the point of a chance. Chance is simply the sum of all face values.
+     * @return - ...
+     */
+    public int chance() {
         return sumOfFaceValues();
     }
 
+    /**
+     * Returns the hashmap contain the count of the different face values
+     * @return - ...
+     */
     public HashMap<Integer, Integer> getFaceCounter() {
         return faceCounter;
     }
