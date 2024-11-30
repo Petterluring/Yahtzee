@@ -6,7 +6,7 @@ import com.patternnames.PatternNames;
 import com.points.Points;
 
 /**
- * This class creates an overview of all the different patterns with 
+ * This class creates an overview of all the different patterns with
  * corresponding points for a set of 5 dice.
  */
 public class PointsOverview {
@@ -22,13 +22,19 @@ public class PointsOverview {
      */
     private int faceCounterLenght;
     /**
-     * This hashmap will contain an overview of the differents patterns and points. 
-     * If you type say "Big Straight", then the map will give you the point for that 
+     * This hashmap will contain an overview of the differents patterns and points.
+     * If you type say "Big Straight", then the map will give you the point for that
      * pattern for the give dice set.
      */
     private HashMap<String, Integer> overview;
 
-
+    /**
+     * The constructor constructs our overview hashmap which will contain
+     * the points for all the patterns contained in a certain set of dice.
+     * 
+     * @param points - Points class for evaluating patterns with corresponding
+     *               points.
+     */
     public PointsOverview(Points points) {
         this.points = points;
         overview = new HashMap<>();
@@ -51,20 +57,20 @@ public class PointsOverview {
     /**
      * In the following private methods, we create different overviews
      * depending on the lenght of the hashmap contained in Points instance.
-     * A certain lenght will give us a hint of what patterns we may exclude. 
-     * This means that we may assign 0 points to some patterns right away. 
-     * E.g. if the lenght of the hashmap in question is one, we know for 
-     * certain that straight may be excluded since one of the conditions is 
+     * A certain lenght will give us a hint of what patterns we may exclude.
+     * This means that we may assign 0 points to some patterns right away.
+     * E.g. if the lenght of the hashmap in question is one, we know for
+     * certain that straight may be excluded since one of the conditions is
      * that all face values are distinct, meaning that the face counter hashmap
      * must be of lenght 5.
      * 
      * BEGIN
      */
 
-     /**
-      * This method is called no matter what the lenght since there is no lenght
-      * that will exclude these.
-      */
+    /**
+     * This method is called no matter what the lenght since there is no lenght
+     * that will exclude these.
+     */
     private void certain() {
         overview.put(PatternNames.ones, points.onesToSixes(1));
         overview.put(PatternNames.twos, points.onesToSixes(2));
@@ -83,7 +89,7 @@ public class PointsOverview {
         overview.put(PatternNames.fullHouse, 0);
         overview.put(PatternNames.smallStraight, 0);
         overview.put(PatternNames.largeStraight, 0);
-        
+        overview.put(PatternNames.yahtzee, points.Yahtzee());
 
     }
 
@@ -95,6 +101,7 @@ public class PointsOverview {
         overview.put(PatternNames.fullHouse, points.fullHouse());
         overview.put(PatternNames.smallStraight, 0);
         overview.put(PatternNames.largeStraight, 0);
+        overview.put(PatternNames.yahtzee, 0);
 
     }
 
@@ -106,6 +113,7 @@ public class PointsOverview {
         overview.put(PatternNames.fullHouse, 0);
         overview.put(PatternNames.smallStraight, 0);
         overview.put(PatternNames.largeStraight, 0);
+        overview.put(PatternNames.yahtzee, 0);
 
     }
 
@@ -117,6 +125,7 @@ public class PointsOverview {
         overview.put(PatternNames.fullHouse, 0);
         overview.put(PatternNames.smallStraight, 0);
         overview.put(PatternNames.largeStraight, 0);
+        overview.put(PatternNames.yahtzee, 0);
 
     }
 
@@ -128,6 +137,7 @@ public class PointsOverview {
         overview.put(PatternNames.fullHouse, 0);
         overview.put(PatternNames.smallStraight, points.straight(false));
         overview.put(PatternNames.largeStraight, points.straight(true));
+        overview.put(PatternNames.yahtzee, 0);
 
     }
 
@@ -135,8 +145,19 @@ public class PointsOverview {
      * END
      */
 
-    public HashMap<String, Integer> getOverview() { 
-        return overview;
+    /**
+     * Returns the point for a given pattern in the overview hashmap.
+     * 
+     * @param pattern - Chosen pattern
+     * @return - Returns the point mapped to a pattern
+     * @throws IllegalArgumentException - The chosen pattern must exist in the
+     *                                  overview
+     */
+    public int getPattern(String pattern) throws IllegalArgumentException {
+        if (!overview.containsKey(pattern)) {
+            throw new IllegalArgumentException("Pattern does not exist in the overview");
+        }
+        return overview.get(pattern);
     }
-    
+
 }
