@@ -3,20 +3,9 @@
  */
 package app;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
-import java.util.Map.Entry;
-
-import com.player.Player;
-import com.points.Points;
-
 public class App {
 
     public static void main(String[] args) {
-        Points points = new Points(new int[]{6, 2, 2, 2, 2});
-        System.out.println(points.onesToSixes(6));
+
     }
 }
