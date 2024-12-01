@@ -9,7 +9,7 @@ public class ScoreTable {
 
 
     public ScoreTable(String... playerNames) {
-
+        
     }
 
     

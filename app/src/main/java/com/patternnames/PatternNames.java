@@ -2,8 +2,8 @@ package com.patternnames;
 
 /**
  * This class globally defines the names of the different patterns.
- * We need this class such that we may be consistent with how 
- * we are referring to different patterns throughout the code. 
+ * We need this class such that we may be consistent with how
+ * we are referring to different patterns throughout the code.
  */
 public class PatternNames {
     public final static String ones = "Ones";
@@ -22,18 +22,18 @@ public class PatternNames {
     public final static String yahtzee = "YAHTZEE";
     public final static String chance = "Chance";
 
-
     /**
-     * Getter for all the names 
+     * Getter for all the names
+     * 
      * @return
      */
     public static String[] getNames() {
-        return new String[]{
-            ones, twos, threes, fours,
-            fives, sixes, pair, twoPair, 
-            threeOfAKind, fourOfAKind, fullHouse, 
-            smallStraight, largeStraight, yahtzee, 
-            chance
+        return new String[] {
+                ones, twos, threes, fours,
+                fives, sixes, pair, twoPair,
+                threeOfAKind, fourOfAKind, fullHouse,
+                smallStraight, largeStraight, yahtzee,
+                chance
         };
     }
 }

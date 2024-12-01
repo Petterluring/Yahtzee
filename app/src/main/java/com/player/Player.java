@@ -9,6 +9,8 @@ import com.die.Die;
 public class Player {
     private String firstName;
     private String lastName;
+    private static int amount = 0;
+    private int id;
     /**
      * The set of dice that is used in the game. Remark that the set is shared among
      * all players.
@@ -16,14 +18,12 @@ public class Player {
      */
     private static Die[] dice = { new Die(6), new Die(6), new Die(6), new Die(6), new Die(6) };
 
-    /**
-     * Initializing a player
-     * @param firstName - ...
-     * @param lastName - ...
-     */
+    
     public Player(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        id = amount;
+        amount++;
     }
 
     /**
@@ -62,36 +62,23 @@ public class Player {
 
     }
 
-    /**
-     * Getter for first name
-     * @return - ...
-     */
     public String getFirstName() {
         return firstName;
     }
 
-    /**
-     * Getter for last name
-     * @return - ...
-     */
     public String getLastName() {
         return lastName;
     }
 
-    /**
-     * Getter for name
-     * @return - ...
-     */
     public String getName() {
         return firstName + " " + lastName;
     }
 
-    /**
-     * Getter for dice
-
-     * @return - ...
-     */
     public static Die[] getDice() {
         return dice;
+    }
+
+    public int getID() {
+        return id;
     }
 }
