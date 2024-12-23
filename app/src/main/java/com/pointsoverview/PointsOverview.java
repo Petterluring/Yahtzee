@@ -24,7 +24,7 @@ public class PointsOverview {
     /**
      * This hashmap will contain an overview of the differents patterns and points.
      * If you type say "Big Straight", then the map will give you the point for that
-     * pattern for the give dice set.
+     * pattern.
      */
     private HashMap<String, Integer> overview;
 

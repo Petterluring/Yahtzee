@@ -59,8 +59,8 @@ public class ScoreColumn {
 
     /**
      * Initializes the column by setting all values to -1. 
-     * The -1 is used for communicating that a pattern have
-     * not been used yet.
+     * -1 is used for communicating that a pattern have
+     * not been used.
      */
     private void initColumn() {
         column = new int[16];
@@ -69,10 +69,22 @@ public class ScoreColumn {
         }
     }
 
-    public void setPoint(String pattern, int point) {
+    
+    public void setPoint(String pattern, int point) throws IllegalArgumentException {
+        if (!indexes.containsKey(pattern)) {
+            throw new IllegalArgumentException("Pattern does not exist");
+        }
+        indexes.put(pattern, point);
+        if (getBonusIndex() == -1) {
 
+        }
     }
 
+    /**
+     * If the sum of ones to sixes is equal or exceeds 63, then you are eligable
+     * for a bonus of 50 points.
+     * @return - Returns boolean by checking if the sum is equal or exceeds 63.
+     */
     private boolean eligiableForBonus() {
         int sum = 0;
         for (int i = 0; i < getBonusIndex(); i++) {
@@ -84,10 +96,24 @@ public class ScoreColumn {
         return sum >= 63;
     }
 
+    /* 
+    private boolean onesToSixesUsed() {
+        
+    }
+    */
+
+    /**
+     * The bonus is located at index 6 in the column variable.
+     * @return - Returns index.
+     */
     private int getBonusIndex() {
         return 6;
     }
 
+    /**
+     * Sets the bonus for a player.
+     * @param eligiable - Is the player eligiable for bonus?
+     */
     private void setBonus(boolean eligiable) {
         if (eligiable) {
             column[getBonusIndex()] = 50;
@@ -118,7 +144,4 @@ public class ScoreColumn {
     public String getPlayerInitials() {
         return playerInitials;
     }
-
-
-
 }
