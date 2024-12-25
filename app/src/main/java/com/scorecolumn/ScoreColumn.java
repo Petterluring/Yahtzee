@@ -7,8 +7,8 @@ import com.patternnames.PatternNames;
 /**
  * This class keeps track of the scores of one player. The class
  * is supposed to act as a column in the score table. A player gets their
- * own column in the score table for tracking scores. A score column could have 
- * the following look: 
+ * own column in the score table for tracking scores. A score column could have
+ * the following look:
  * 
  */
 public class ScoreColumn {
@@ -20,8 +20,8 @@ public class ScoreColumn {
      */
     private int[] column;
     /**
-     * This hashmap maps the different patterns and bonus point row to an index. 
-     * This is needed such that the user of the class can refer to an index in the 
+     * This hashmap maps the different patterns and bonus point row to an index.
+     * This is needed such that the user of the class can refer to an index in the
      * column by pattern name instead of a number.
      */
     private static final HashMap<String, Integer> indexes = new HashMap<>();
@@ -35,9 +35,7 @@ public class ScoreColumn {
         }
     }
 
-    /**
-     * Assigns appropriate indexes for the given patterns.
-     */
+    
     private static void initIndexes() {
         indexes.put(PatternNames.ones, 0);
         indexes.put(PatternNames.twos, 1);
@@ -57,9 +55,21 @@ public class ScoreColumn {
         indexes.put(PatternNames.chance, 15);
     }
 
+    public static int getPatternIndex(String pattern) throws IllegalStateException {
+        if (indexes.size() == 0) {
+            throw new IllegalStateException("Indexes hashmap have not been initialized yet");
+        }
+        Object value = indexes.get(pattern);
+        if (value == null) {
+            return -1;
+        }
+        int index = (int) value;
+        return index;
+    }
+
     /**
-     * Initializes the column by setting all values to -1. 
-     * -1 is used for communicating that a pattern have
+     * Initializes the column by setting all values to -1.
+     * -1 is used as a null type for communicating that a pattern have
      * not been used.
      */
     private void initColumn() {
@@ -69,7 +79,6 @@ public class ScoreColumn {
         }
     }
 
-    
     public void setPoint(String pattern, int point) throws IllegalArgumentException {
         if (!indexes.containsKey(pattern)) {
             throw new IllegalArgumentException("Pattern does not exist");
@@ -83,6 +92,7 @@ public class ScoreColumn {
     /**
      * If the sum of ones to sixes is equal or exceeds 63, then you are eligable
      * for a bonus of 50 points.
+     * 
      * @return - Returns boolean by checking if the sum is equal or exceeds 63.
      */
     private boolean eligiableForBonus() {
@@ -96,14 +106,15 @@ public class ScoreColumn {
         return sum >= 63;
     }
 
-    /* 
-    private boolean onesToSixesUsed() {
-        
-    }
-    */
+    /*
+     * private boolean onesToSixesUsed() {
+     * 
+     * }
+     */
 
     /**
      * The bonus is located at index 6 in the column variable.
+     * 
      * @return - Returns index.
      */
     private int getBonusIndex() {
@@ -112,6 +123,7 @@ public class ScoreColumn {
 
     /**
      * Sets the bonus for a player.
+     * 
      * @param eligiable - Is the player eligiable for bonus?
      */
     private void setBonus(boolean eligiable) {
@@ -122,9 +134,9 @@ public class ScoreColumn {
         }
     }
 
-
     /**
      * Calculates the grand total by calculating a players column sum.
+     * 
      * @return - ...
      */
     public int getGrandTotal() {
@@ -135,6 +147,13 @@ public class ScoreColumn {
             }
         }
         return sum;
+    }
+
+    public int getColumnElement(int index) throws IllegalArgumentException {
+        if (index < 0 || index >= column.length) {
+            throw new IllegalArgumentException("Index is out of range");
+        }
+        return column[index];
     }
 
     public int getPlayerID() {
