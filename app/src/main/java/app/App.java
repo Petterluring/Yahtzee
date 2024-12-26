@@ -1,15 +1,14 @@
 package app;
 
+import java.util.Arrays;
 import java.util.HashMap;
+
+import com.patternnames.PatternNames;
+import com.scorecolumn.ScoreColumn;
 
 public class App {
 
     public static void main(String[] args) {
-        HashMap<String, Integer> map = new HashMap<>();
-        map.put("Test", 1);
-
-        Object i = map.get("BULL");
-        System.out.println(i);
+        
     }
 }
-

@@ -9,7 +9,7 @@ import com.die.Die;
 public class Player {
     private String firstName;
     private String lastName;
-    private static int amount = 0;
+    private static int AMOUNT = 0;
     private int id;
     /**
      * The set of dice that is used in the game. Remark that the set is shared among
@@ -22,8 +22,8 @@ public class Player {
     public Player(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        id = amount;
-        amount++;
+        id = AMOUNT;
+        AMOUNT++;
     }
 
     /**

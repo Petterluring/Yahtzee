@@ -14,29 +14,19 @@ import com.patternnames.PatternNames;
 public class ScoreColumn {
     private final int playerID;
     private final String playerInitials;
+    private static final int BONUSINDEX = 6;
     /**
      * The players column. The column consists of 16 rows each containing
      * the point of a certatin pattern, but where 1 of them is bonus points.
      */
     private int[] column;
     /**
-     * This hashmap maps the different patterns and bonus point row to an index.
-     * This is needed such that the user of the class can refer to an index in the
-     * column by pattern name instead of a number.
+     * This hashmap maps the different patterns and the bonus point to an index.
+     * This is used such that the user of the class can refer to an index in the
+     * column by inserting a pattern name as a parameter instead of an index number.
      */
     private static final HashMap<String, Integer> indexes = new HashMap<>();
-
-    public ScoreColumn(int playerID, String playerInitials) {
-        this.playerID = playerID;
-        this.playerInitials = playerInitials;
-        initColumn();
-        if (indexes.size() == 0) {
-            initIndexes();
-        }
-    }
-
-    
-    private static void initIndexes() {
+    static {
         indexes.put(PatternNames.ones, 0);
         indexes.put(PatternNames.twos, 1);
         indexes.put(PatternNames.threes, 2);
@@ -55,16 +45,10 @@ public class ScoreColumn {
         indexes.put(PatternNames.chance, 15);
     }
 
-    public static int getPatternIndex(String pattern) throws IllegalStateException {
-        if (indexes.size() == 0) {
-            throw new IllegalStateException("Indexes hashmap have not been initialized yet");
-        }
-        Object value = indexes.get(pattern);
-        if (value == null) {
-            return -1;
-        }
-        int index = (int) value;
-        return index;
+    public ScoreColumn(int playerID, String playerInitials) {
+        this.playerID = playerID;
+        this.playerInitials = playerInitials;
+        column = initColumn();
     }
 
     /**
@@ -72,25 +56,48 @@ public class ScoreColumn {
      * -1 is used as a null type for communicating that a pattern have
      * not been used.
      */
-    private void initColumn() {
+    private int[] initColumn() {
         column = new int[16];
         for (int i = 0; i < column.length; i++) {
             column[i] = -1;
         }
+        return column;
     }
 
-    public void setPoint(String pattern, int point) throws IllegalArgumentException {
-        if (!indexes.containsKey(pattern)) {
+    public static int getPatternIndex(String pattern) throws IllegalArgumentException {
+        Object value = indexes.get(pattern);
+        if (value == null) {
             throw new IllegalArgumentException("Pattern does not exist");
         }
-        indexes.put(pattern, point);
-        if (getBonusIndex() == -1) {
+        return (int) value;
+    }
 
+    public int getColumnElement(int index) throws IllegalArgumentException {
+        if (index < 0 || index >= column.length) {
+            throw new IllegalArgumentException("Index is out of range");
+        }
+        return column[index];
+    }
+
+    /**
+     * Sets a point for a certain pattern. The method consistently checks if the
+     * player
+     * is eligible for bonus, and assigns a bonus if eligible.
+     * 
+     * @param pattern - Chosen pattern name
+     * @param point   - Chosen point to set
+     * @throws IllegalArgumentException - See implementation
+     */
+    public void setPoint(String pattern, int point) {
+        column[getPatternIndex(pattern)] = point;
+        if (BONUSINDEX != -1 && onesToSixesUsed()) {
+            setBonus(eligiableForBonus());
         }
     }
 
     /**
-     * If the sum of ones to sixes is equal or exceeds 63, then you are eligable
+     * If the sum of patterns ones to sixes is equal or exceeds 63, then the player
+     * are eligable
      * for a bonus of 50 points.
      * 
      * @return - Returns boolean by checking if the sum is equal or exceeds 63.
@@ -106,19 +113,19 @@ public class ScoreColumn {
         return sum >= 63;
     }
 
-    /*
-     * private boolean onesToSixesUsed() {
-     * 
-     * }
-     */
-
     /**
-     * The bonus is located at index 6 in the column variable.
-     * 
-     * @return - Returns index.
+     * Checks if patterns ones, twos, threes, fours, fives and sixes
+     * are all used. We may know this by checking if all these patterns have 
+     * a -1 or not in their row. If none of them have -1, then they are all used.
+     * @return - True if used, false else
      */
-    private int getBonusIndex() {
-        return 6;
+    private boolean onesToSixesUsed() {
+        for (int i = 0; i < getBonusIndex(); i++) {
+            if (column[i] == -1) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -128,10 +135,19 @@ public class ScoreColumn {
      */
     private void setBonus(boolean eligiable) {
         if (eligiable) {
-            column[getBonusIndex()] = 50;
+            column[BONUSINDEX] = 50;
         } else {
-            column[getBonusIndex()] = 0;
+            column[BONUSINDEX] = 0;
         }
+    }
+
+    /**
+     * The bonus is located at index 6 in the column variable.
+     * 
+     * @return - Returns index.
+     */
+    public static int getBonusIndex() {
+        return BONUSINDEX;
     }
 
     /**
@@ -147,13 +163,6 @@ public class ScoreColumn {
             }
         }
         return sum;
-    }
-
-    public int getColumnElement(int index) throws IllegalArgumentException {
-        if (index < 0 || index >= column.length) {
-            throw new IllegalArgumentException("Index is out of range");
-        }
-        return column[index];
     }
 
     public int getPlayerID() {
