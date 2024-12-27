@@ -8,7 +8,7 @@ import com.patternnames.PatternNames;
 import com.player.Player;
 import com.scorecolumn.ScoreColumn;
 
-public class ScoreTableTest {
+class ScoreTableTest {
     private final ScoreTable scoreTable = new ScoreTable(
         new Player("John", "Doe"), new Player("Joe", "Ericsson"),
         new Player("Martin", "Ericsson")

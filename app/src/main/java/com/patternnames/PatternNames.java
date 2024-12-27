@@ -22,6 +22,7 @@ public class PatternNames {
     public final static String YAHTZEE = "YAHTZEE";
     public final static String CHANCE = "Chance";
 
+    private PatternNames() {}
     
     public static String[] getNames() {
         return new String[] {

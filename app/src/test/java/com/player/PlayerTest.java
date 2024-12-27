@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import com.die.Die;
 
-public class PlayerTest {
+class PlayerTest {
     private final Player player = new Player("Richard", "Samson");
     private final String nameError = "Names does not match";
     @Test

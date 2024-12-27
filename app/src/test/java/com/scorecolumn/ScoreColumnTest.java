@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import com.patternnames.PatternNames;
 
-public class ScoreColumnTest {
+class ScoreColumnTest {
     private final ScoreColumn scoreColumn = new ScoreColumn(1, "PG");
 
     @Test
@@ -24,21 +24,21 @@ public class ScoreColumnTest {
      */
     @Test
     void indexesIsAssignedCorrectly() {
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.ONES), 0);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.TWOS), 1);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.THREES), 2);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.FOURS), 3);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.FIVES), 4);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.SIXES), 5);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.PAIR), 7);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.TWOPAIR), 8);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.THREEOFAKIND), 9);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.FOUROFAKIND), 10);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.FULLHOUSE), 11);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.SMALLSTRAIGHT), 12);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.LARGESTRAIGHT), 13);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.YAHTZEE), 14);
-        assertEquals(ScoreColumn.getPatternIndex(PatternNames.CHANCE), 15);
+        assertEquals(0, ScoreColumn.getPatternIndex(PatternNames.ONES));
+        assertEquals(1, ScoreColumn.getPatternIndex(PatternNames.TWOS));
+        assertEquals(2, ScoreColumn.getPatternIndex(PatternNames.THREES));
+        assertEquals(3, ScoreColumn.getPatternIndex(PatternNames.FOURS));
+        assertEquals(4, ScoreColumn.getPatternIndex(PatternNames.FIVES));
+        assertEquals(5, ScoreColumn.getPatternIndex(PatternNames.SIXES));
+        assertEquals(7, ScoreColumn.getPatternIndex(PatternNames.PAIR));
+        assertEquals(8, ScoreColumn.getPatternIndex(PatternNames.TWOPAIR));
+        assertEquals(9, ScoreColumn.getPatternIndex(PatternNames.THREEOFAKIND));
+        assertEquals(10, ScoreColumn.getPatternIndex(PatternNames.FOUROFAKIND));
+        assertEquals(11, ScoreColumn.getPatternIndex(PatternNames.FULLHOUSE));
+        assertEquals(12, ScoreColumn.getPatternIndex(PatternNames.SMALLSTRAIGHT));
+        assertEquals(13, ScoreColumn.getPatternIndex(PatternNames.LARGESTRAIGHT));
+        assertEquals(14, ScoreColumn.getPatternIndex(PatternNames.YAHTZEE));
+        assertEquals(15, ScoreColumn.getPatternIndex(PatternNames.CHANCE));
     }
 
     @Test

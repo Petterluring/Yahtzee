@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.patternnames.PatternNames;
 import com.points.Points;
 
-public class PointsOverviewTest {
+class PointsOverviewTest {
     
 
     @Test

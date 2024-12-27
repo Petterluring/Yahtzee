@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 
-public class PointsTest {
+class PointsTest {
 
     @Test
     void constructorCanThrowExceptions() {
