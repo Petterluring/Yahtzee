@@ -27,22 +27,22 @@ public class ScoreColumn {
      */
     private static final HashMap<String, Integer> indexes = new HashMap<>();
     static {
-        indexes.put(PatternNames.ones, 0);
-        indexes.put(PatternNames.twos, 1);
-        indexes.put(PatternNames.threes, 2);
-        indexes.put(PatternNames.fours, 3);
-        indexes.put(PatternNames.fives, 4);
-        indexes.put(PatternNames.sixes, 5);
+        indexes.put(PatternNames.ONES, 0);
+        indexes.put(PatternNames.TWOS, 1);
+        indexes.put(PatternNames.THREES, 2);
+        indexes.put(PatternNames.FOURS, 3);
+        indexes.put(PatternNames.FIVES, 4);
+        indexes.put(PatternNames.SIXES, 5);
         // Bonus index: 6
-        indexes.put(PatternNames.pair, 7);
-        indexes.put(PatternNames.twoPair, 8);
-        indexes.put(PatternNames.threeOfAKind, 9);
-        indexes.put(PatternNames.fourOfAKind, 10);
-        indexes.put(PatternNames.fullHouse, 11);
-        indexes.put(PatternNames.smallStraight, 12);
-        indexes.put(PatternNames.largeStraight, 13);
-        indexes.put(PatternNames.yahtzee, 14);
-        indexes.put(PatternNames.chance, 15);
+        indexes.put(PatternNames.PAIR, 7);
+        indexes.put(PatternNames.TWOPAIR, 8);
+        indexes.put(PatternNames.THREEOFAKIND, 9);
+        indexes.put(PatternNames.FOUROFAKIND, 10);
+        indexes.put(PatternNames.FULLHOUSE, 11);
+        indexes.put(PatternNames.SMALLSTRAIGHT, 12);
+        indexes.put(PatternNames.LARGESTRAIGHT, 13);
+        indexes.put(PatternNames.YAHTZEE, 14);
+        indexes.put(PatternNames.CHANCE, 15);
     }
 
     public ScoreColumn(int playerID, String playerInitials) {

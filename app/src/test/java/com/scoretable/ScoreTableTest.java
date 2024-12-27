@@ -29,11 +29,11 @@ public class ScoreTableTest {
 
     @Test
     void canSetPointCorrectly() {
-        scoreTable.setPoint(0, PatternNames.ones, 3);
-        scoreTable.setPoint(1, PatternNames.ones, 3);
-        scoreTable.setPoint(2, PatternNames.ones, 3);
+        scoreTable.setPoint(0, PatternNames.ONES, 3);
+        scoreTable.setPoint(1, PatternNames.ONES, 3);
+        scoreTable.setPoint(2, PatternNames.ONES, 3);
         for (ScoreColumn column : scoreTable.getColumns()) {
-            assertEquals(3, column.getColumnElement(ScoreColumn.getPatternIndex(PatternNames.ones)));
+            assertEquals(3, column.getColumnElement(ScoreColumn.getPatternIndex(PatternNames.ONES)));
         }
     }
 

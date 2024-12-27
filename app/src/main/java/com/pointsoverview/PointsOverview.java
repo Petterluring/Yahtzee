@@ -72,72 +72,72 @@ public class PointsOverview {
      * that will exclude these.
      */
     private void certain() {
-        overview.put(PatternNames.ones, points.onesToSixes(1));
-        overview.put(PatternNames.twos, points.onesToSixes(2));
-        overview.put(PatternNames.threes, points.onesToSixes(3));
-        overview.put(PatternNames.fours, points.onesToSixes(4));
-        overview.put(PatternNames.fives, points.onesToSixes(5));
-        overview.put(PatternNames.sixes, points.onesToSixes(6));
-        overview.put(PatternNames.chance, points.chance());
+        overview.put(PatternNames.ONES, points.onesToSixes(1));
+        overview.put(PatternNames.TWOS, points.onesToSixes(2));
+        overview.put(PatternNames.THREES, points.onesToSixes(3));
+        overview.put(PatternNames.FOURS, points.onesToSixes(4));
+        overview.put(PatternNames.FIVES, points.onesToSixes(5));
+        overview.put(PatternNames.SIXES, points.onesToSixes(6));
+        overview.put(PatternNames.CHANCE, points.chance());
     }
 
     private void lenghtOne() {
-        overview.put(PatternNames.pair, points.pair());
-        overview.put(PatternNames.twoPair, 0);
-        overview.put(PatternNames.threeOfAKind, points.threeOfAKind());
-        overview.put(PatternNames.fourOfAKind, points.fourOfAKind());
-        overview.put(PatternNames.fullHouse, 0);
-        overview.put(PatternNames.smallStraight, 0);
-        overview.put(PatternNames.largeStraight, 0);
-        overview.put(PatternNames.yahtzee, points.Yahtzee());
+        overview.put(PatternNames.PAIR, points.pair());
+        overview.put(PatternNames.TWOPAIR, 0);
+        overview.put(PatternNames.THREEOFAKIND, points.threeOfAKind());
+        overview.put(PatternNames.FOUROFAKIND, points.fourOfAKind());
+        overview.put(PatternNames.FULLHOUSE, 0);
+        overview.put(PatternNames.SMALLSTRAIGHT, 0);
+        overview.put(PatternNames.LARGESTRAIGHT, 0);
+        overview.put(PatternNames.YAHTZEE, points.Yahtzee());
 
     }
 
     private void lenghtTwo() {
-        overview.put(PatternNames.pair, points.pair());
-        overview.put(PatternNames.twoPair, points.twoPair());
-        overview.put(PatternNames.threeOfAKind, points.threeOfAKind());
-        overview.put(PatternNames.fourOfAKind, points.fourOfAKind());
-        overview.put(PatternNames.fullHouse, points.fullHouse());
-        overview.put(PatternNames.smallStraight, 0);
-        overview.put(PatternNames.largeStraight, 0);
-        overview.put(PatternNames.yahtzee, 0);
+        overview.put(PatternNames.PAIR, points.pair());
+        overview.put(PatternNames.TWOPAIR, points.twoPair());
+        overview.put(PatternNames.THREEOFAKIND, points.threeOfAKind());
+        overview.put(PatternNames.FOUROFAKIND, points.fourOfAKind());
+        overview.put(PatternNames.FULLHOUSE, points.fullHouse());
+        overview.put(PatternNames.SMALLSTRAIGHT, 0);
+        overview.put(PatternNames.LARGESTRAIGHT, 0);
+        overview.put(PatternNames.YAHTZEE, 0);
 
     }
 
     private void lenghtThree() {
-        overview.put(PatternNames.pair, points.pair());
-        overview.put(PatternNames.twoPair, points.twoPair());
-        overview.put(PatternNames.threeOfAKind, points.threeOfAKind());
-        overview.put(PatternNames.fourOfAKind, 0);
-        overview.put(PatternNames.fullHouse, 0);
-        overview.put(PatternNames.smallStraight, 0);
-        overview.put(PatternNames.largeStraight, 0);
-        overview.put(PatternNames.yahtzee, 0);
+        overview.put(PatternNames.PAIR, points.pair());
+        overview.put(PatternNames.TWOPAIR, points.twoPair());
+        overview.put(PatternNames.THREEOFAKIND, points.threeOfAKind());
+        overview.put(PatternNames.FOUROFAKIND, 0);
+        overview.put(PatternNames.FULLHOUSE, 0);
+        overview.put(PatternNames.SMALLSTRAIGHT, 0);
+        overview.put(PatternNames.LARGESTRAIGHT, 0);
+        overview.put(PatternNames.YAHTZEE, 0);
 
     }
 
     private void lenghtFour() {
-        overview.put(PatternNames.pair, points.pair());
-        overview.put(PatternNames.twoPair, 0);
-        overview.put(PatternNames.threeOfAKind, 0);
-        overview.put(PatternNames.fourOfAKind, 0);
-        overview.put(PatternNames.fullHouse, 0);
-        overview.put(PatternNames.smallStraight, 0);
-        overview.put(PatternNames.largeStraight, 0);
-        overview.put(PatternNames.yahtzee, 0);
+        overview.put(PatternNames.PAIR, points.pair());
+        overview.put(PatternNames.TWOPAIR, 0);
+        overview.put(PatternNames.THREEOFAKIND, 0);
+        overview.put(PatternNames.FOUROFAKIND, 0);
+        overview.put(PatternNames.FULLHOUSE, 0);
+        overview.put(PatternNames.SMALLSTRAIGHT, 0);
+        overview.put(PatternNames.LARGESTRAIGHT, 0);
+        overview.put(PatternNames.YAHTZEE, 0);
 
     }
 
     private void lenghtFive() {
-        overview.put(PatternNames.pair, 0);
-        overview.put(PatternNames.twoPair, 0);
-        overview.put(PatternNames.threeOfAKind, 0);
-        overview.put(PatternNames.fourOfAKind, 0);
-        overview.put(PatternNames.fullHouse, 0);
-        overview.put(PatternNames.smallStraight, points.straight(false));
-        overview.put(PatternNames.largeStraight, points.straight(true));
-        overview.put(PatternNames.yahtzee, 0);
+        overview.put(PatternNames.PAIR, 0);
+        overview.put(PatternNames.TWOPAIR, 0);
+        overview.put(PatternNames.THREEOFAKIND, 0);
+        overview.put(PatternNames.FOUROFAKIND, 0);
+        overview.put(PatternNames.FULLHOUSE, 0);
+        overview.put(PatternNames.SMALLSTRAIGHT, points.straight(false));
+        overview.put(PatternNames.LARGESTRAIGHT, points.straight(true));
+        overview.put(PatternNames.YAHTZEE, 0);
 
     }
 

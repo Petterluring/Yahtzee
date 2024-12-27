@@ -14,13 +14,13 @@ public class PointsOverviewTest {
     void canAssignCorrectOverviewForCertains() {
         Points points = new Points(new int[]{1, 2, 3, 4, 6});
         PointsOverview pointsOverview = new PointsOverview(points);
-        assertEquals(1, pointsOverview.getPattern(PatternNames.ones));
-        assertEquals(2, pointsOverview.getPattern(PatternNames.twos));
-        assertEquals(3, pointsOverview.getPattern(PatternNames.threes));
-        assertEquals(4, pointsOverview.getPattern(PatternNames.fours));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.fives));
-        assertEquals(6, pointsOverview.getPattern(PatternNames.sixes));
-        assertEquals(16, pointsOverview.getPattern(PatternNames.chance));
+        assertEquals(1, pointsOverview.getPattern(PatternNames.ONES));
+        assertEquals(2, pointsOverview.getPattern(PatternNames.TWOS));
+        assertEquals(3, pointsOverview.getPattern(PatternNames.THREES));
+        assertEquals(4, pointsOverview.getPattern(PatternNames.FOURS));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.FIVES));
+        assertEquals(6, pointsOverview.getPattern(PatternNames.SIXES));
+        assertEquals(16, pointsOverview.getPattern(PatternNames.CHANCE));
 
     }
 
@@ -28,78 +28,78 @@ public class PointsOverviewTest {
     void canAssignCorrectOverviewForLenghtOne() {
         Points points = new Points(new int[]{2, 2, 2, 2, 2});
         PointsOverview pointsOverview = new PointsOverview(points);
-        assertEquals(4, pointsOverview.getPattern(PatternNames.pair));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.twoPair));
-        assertEquals(6, pointsOverview.getPattern(PatternNames.threeOfAKind));
-        assertEquals(8, pointsOverview.getPattern(PatternNames.fourOfAKind));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.fullHouse));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.smallStraight));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.largeStraight));
-        assertEquals(50, pointsOverview.getPattern(PatternNames.yahtzee));
+        assertEquals(4, pointsOverview.getPattern(PatternNames.PAIR));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.TWOPAIR));
+        assertEquals(6, pointsOverview.getPattern(PatternNames.THREEOFAKIND));
+        assertEquals(8, pointsOverview.getPattern(PatternNames.FOUROFAKIND));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.FULLHOUSE));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.SMALLSTRAIGHT));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.LARGESTRAIGHT));
+        assertEquals(50, pointsOverview.getPattern(PatternNames.YAHTZEE));
     }
 
     @Test
     void canAssignCorrectOverviewForLenghtTwo() {
         Points points = new Points(new int[]{2, 2, 3, 3, 3});
         PointsOverview pointsOverview = new PointsOverview(points);
-        assertEquals(6, pointsOverview.getPattern(PatternNames.pair));
-        assertEquals(10, pointsOverview.getPattern(PatternNames.twoPair));
-        assertEquals(9, pointsOverview.getPattern(PatternNames.threeOfAKind));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.fourOfAKind));
-        assertEquals(13, pointsOverview.getPattern(PatternNames.fullHouse));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.smallStraight));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.largeStraight));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.yahtzee));
+        assertEquals(6, pointsOverview.getPattern(PatternNames.PAIR));
+        assertEquals(10, pointsOverview.getPattern(PatternNames.TWOPAIR));
+        assertEquals(9, pointsOverview.getPattern(PatternNames.THREEOFAKIND));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.FOUROFAKIND));
+        assertEquals(13, pointsOverview.getPattern(PatternNames.FULLHOUSE));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.SMALLSTRAIGHT));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.LARGESTRAIGHT));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.YAHTZEE));
     }
 
     @Test
     void canAssignCorrectOverviewForLenghtThree() {
         Points points = new Points(new int[]{2, 2, 3, 3, 6});
         PointsOverview pointsOverview = new PointsOverview(points);
-        assertEquals(6, pointsOverview.getPattern(PatternNames.pair));
-        assertEquals(10, pointsOverview.getPattern(PatternNames.twoPair));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.threeOfAKind));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.fourOfAKind));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.fullHouse));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.smallStraight));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.largeStraight));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.yahtzee));
+        assertEquals(6, pointsOverview.getPattern(PatternNames.PAIR));
+        assertEquals(10, pointsOverview.getPattern(PatternNames.TWOPAIR));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.THREEOFAKIND));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.FOUROFAKIND));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.FULLHOUSE));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.SMALLSTRAIGHT));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.LARGESTRAIGHT));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.YAHTZEE));
     }
 
     @Test
     void canAssignCorrectOverviewForLenghtFour() {
         Points points = new Points(new int[]{1, 1, 2, 3, 4});
         PointsOverview pointsOverview = new PointsOverview(points);
-        assertEquals(2, pointsOverview.getPattern(PatternNames.pair));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.twoPair));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.threeOfAKind));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.fourOfAKind));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.fullHouse));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.smallStraight));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.largeStraight));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.yahtzee));
+        assertEquals(2, pointsOverview.getPattern(PatternNames.PAIR));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.TWOPAIR));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.THREEOFAKIND));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.FOUROFAKIND));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.FULLHOUSE));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.SMALLSTRAIGHT));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.LARGESTRAIGHT));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.YAHTZEE));
     }
 
     @Test
     void canAssignCorrectOverviewForLenghtFive() {
         Points points = new Points(new int[]{1, 2, 3, 4, 6});
         PointsOverview pointsOverview = new PointsOverview(points);
-        assertEquals(0, pointsOverview.getPattern(PatternNames.pair));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.twoPair));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.threeOfAKind));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.fourOfAKind));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.fullHouse));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.smallStraight));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.largeStraight));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.yahtzee));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.PAIR));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.TWOPAIR));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.THREEOFAKIND));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.FOUROFAKIND));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.FULLHOUSE));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.SMALLSTRAIGHT));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.LARGESTRAIGHT));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.YAHTZEE));
 
         points = new Points(new int[]{1, 2, 3, 4, 5});
         pointsOverview = new PointsOverview(points);
-        assertEquals(15, pointsOverview.getPattern(PatternNames.smallStraight));
-        assertEquals(0, pointsOverview.getPattern(PatternNames.largeStraight));
+        assertEquals(15, pointsOverview.getPattern(PatternNames.SMALLSTRAIGHT));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.LARGESTRAIGHT));
         points = new Points(new int[]{2, 3, 4, 5, 6});
         pointsOverview = new PointsOverview(points);
-        assertEquals(0, pointsOverview.getPattern(PatternNames.smallStraight));
-        assertEquals(20, pointsOverview.getPattern(PatternNames.largeStraight));
+        assertEquals(0, pointsOverview.getPattern(PatternNames.SMALLSTRAIGHT));
+        assertEquals(20, pointsOverview.getPattern(PatternNames.LARGESTRAIGHT));
     }
 }
