@@ -19,24 +19,22 @@ public class Points {
      * The constructor initializes this class by counting the
      * occurrences of each faceValue and save it in faceCounter variable.
      * 
-     * @param dice - Chosen set of dice
-     * @throws IllegalArgumentException - Dice set must be of lenght 5
+     * @param faceValues - Chosen set of dice
      */
-    public Points(int[] dice) throws IllegalArgumentException {
-        if (dice.length != 5) {
+    public Points(int[] faceValues) throws IllegalArgumentException {
+        if (faceValues.length != 5) {
             throw new IllegalArgumentException("There must be 5 dice.");
         }
-        for (int e : dice) {
+        for (int e : faceValues) {
             if (e < 1 || e > 6) {
                 throw new IllegalArgumentException(faceValueError);
             }
         }
-        faceCounter = countFaceValues(dice);
+        faceCounter = countFaceValues(faceValues);
     }
 
     /**
      * Counts the occurences of each face value
-     * 
      * @param faceValues - Array of face values
      * @return - Returns a hashmap which keeps track of the occurrences
      */
@@ -52,11 +50,7 @@ public class Points {
         return faceCounter;
     }
 
-    /**
-     * Calculates and returns the sum of the face values.
-     * 
-     * @return ...
-     */
+
     private int sumOfFaceValues() {
         int sum = 0;
         for (int key : faceCounter.keySet()) {
@@ -74,8 +68,6 @@ public class Points {
      * @param faceValue - Chosen face value.
      * @return - Returns the point. Returns 0 if parameter faceValue is not found in
      *         the faceCounter.
-     * @throws IllegalArgumentException - A face value must stay in range between 1
-     *                                  and 6.
      */
     public int onesToSixes(int faceValue) throws IllegalArgumentException {
         if (faceValue < 1 || faceValue > 6) {
@@ -85,17 +77,21 @@ public class Points {
             if (key == faceValue) {
                 return key * faceCounter.get(key);
             }
-
         }
         return 0;
     }
 
-    /**
-     * Returns the point of the highest pair in the dice set.
-     * Returns 0 if there is no pair.
+
+    /*
+     * The following methods calculates the points for the different patterns. 
+     * A certain pattern may have different point ranges depending on the face values. 
+     * The following methods will always calculate the best possible point for a certain pattern. 
+     * E.g, if the face values are {1, 2, 2, 3, 3}, then the pair() method will return the highest
+     * pair since that pair will be the highest point, i.e 3*2=6.
      * 
-     * @return ...
+     * BEGIN
      */
+
     public int pair() {
         if (faceCounter.size() == 5) {
             return 0;
@@ -109,10 +105,6 @@ public class Points {
         return highestFaceValue * 2;
     }
 
-    /**
-     * Returns the point of a two pair. Returns 0 if there is no two pair.
-     * @return - ...
-     */
     public int twoPair() {
         if (faceCounter.size() == 1 || faceCounter.size() >= 4) {
             return 0;
@@ -127,10 +119,6 @@ public class Points {
         return sum;
     }
 
-    /**
-     * Calculates the point of a three of a kind. Returns 0 if there is none.
-     * @return - ...
-     */
     public int threeOfAKind() {
         if (faceCounter.size() >= 4) {
             return 0;
@@ -143,10 +131,6 @@ public class Points {
         return 0;
     }
 
-    /**
-     * Calculates the point of a four of a kind. Returns 0 if there is none.
-     * @return - ...
-     */
     public int fourOfAKind() {
         if (faceCounter.size() > 2) {
             return 0;
@@ -159,12 +143,6 @@ public class Points {
         return 0;
     }
 
-    /**
-     * Returns the point of big or small straight.
-     * 
-     * @param big - Big or small straight?
-     * @return - ...
-     */
     public int straight(boolean big) {
         if (faceCounter.size() != 5) {
             return 0;
@@ -180,10 +158,6 @@ public class Points {
         return point;
     }
 
-    /**
-     * Calculates the point of a full house. Returns 0 if none.
-     * @return - ...
-     */
     public int fullHouse() {
         if (faceCounter.size() != 2) {
             return 0;
@@ -196,10 +170,6 @@ public class Points {
         return 0;
     }
 
-    /**
-     * Calculates the point of a Yahtzee. Returns 0 if none.
-     * @return - ...
-     */
     public int Yahtzee() {
         if (faceCounter.size() != 1) {
             return 0;
@@ -207,13 +177,12 @@ public class Points {
         return 50;
     }
 
-    /**
-     * Calculates the point of a chance. Chance is simply the sum of all face values.
-     * @return - ...
-     */
     public int chance() {
         return sumOfFaceValues();
     }
+    /*
+     * END
+     */
 
     /**
      * Returns the hashmap contain the count of the different face values
@@ -222,5 +191,4 @@ public class Points {
     public HashMap<Integer, Integer> getFaceCounter() {
         return faceCounter;
     }
-
 }

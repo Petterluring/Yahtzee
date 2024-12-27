@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import com.patternnames.PatternNames;
 import com.player.Player;
-import com.scorecolumn.ScoreColumn;
 
 class ScoreTableTest {
     private final ScoreTable scoreTable = new ScoreTable(

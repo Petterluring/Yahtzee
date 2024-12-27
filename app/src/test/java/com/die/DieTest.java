@@ -25,7 +25,7 @@ public class DieTest {
         int iterations = 1_000_000;
         int[] counts = new int[6];
         for (int i = 0; i < iterations; i++) {
-            counts[die.role() - 1] += 1;
+            counts[die.roll() - 1] += 1;
         }
         for (int e : counts) {
             assertNotEquals(0, e);

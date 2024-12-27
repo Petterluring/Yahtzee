@@ -30,33 +30,20 @@ public class Die {
             throw new IllegalArgumentException("A die must have at least one side");
         }
         this.sides = sides;
-        role();
+        roll();
     }
 
-    /**
-     * Roles the die
-     * 
-     * @return - Returns the face value from the role
-     */
-    public int role() {
-        faceValue = random.nextInt(sides) + 1;
-        return faceValue;
+
+    public int roll() {
+        return random.nextInt(sides) + 1;
     }
 
-    /**
-     * Returns the amount of sides on the die
-     * 
-     * @return - ...
-     */
+    
     public int getSides() {
         return sides;
     }
 
-    /**
-     * Returns the current faceValue
-     * 
-     * @return - ...
-     */
+    
     public int getFaceValue() {
         return faceValue;
     }

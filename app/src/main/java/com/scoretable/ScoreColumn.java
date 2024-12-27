@@ -1,4 +1,4 @@
-package com.scorecolumn;
+package com.scoretable;
 
 import java.util.HashMap;
 

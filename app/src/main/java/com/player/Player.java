@@ -9,14 +9,21 @@ import com.die.Die;
 public class Player {
     private String firstName;
     private String lastName;
+    /**
+     * Amount of players
+     */
     private static int amount = 0;
     private int id;
+
     /**
      * The set of dice that is used in the game. Remark that the set is shared among
      * all players.
      * All dice have six sides.
      */
-    private static Die[] dice = { new Die(6), new Die(6), new Die(6), new Die(6), new Die(6) };
+    private static Die[] dice = { 
+        new Die(6), new Die(6),
+        new Die(6), new Die(6),
+        new Die(6) };
 
     
     public Player(String firstName, String lastName) {
@@ -28,13 +35,12 @@ public class Player {
 
     /**
      * Roll all dice.
-     * 
      * @return - The values of the roled dice.
      */
     public static int[] rollDice() {
         int[] diceValues = new int[5];
         for (int i = 0; i < 5; i++) {
-            diceValues[i] = dice[i].role();
+            diceValues[i] = dice[i].roll();
         }
         return diceValues;
     }
@@ -55,7 +61,7 @@ public class Player {
         int[] diceValues = new int[5];
         for (int i = 0; i < 5; i++) {
             if (chosenDiceToRoll[i]) {
-                diceValues[i] = dice[i].role();
+                diceValues[i] = dice[i].roll();
             }
         }
         return diceValues;

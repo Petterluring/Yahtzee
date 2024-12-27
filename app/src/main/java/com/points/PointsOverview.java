@@ -1,9 +1,8 @@
-package com.pointsoverview;
+package com.points;
 
 import java.util.HashMap;
 
 import com.patternnames.PatternNames;
-import com.points.Points;
 
 /**
  * This class creates an overview of all the different patterns with
@@ -140,7 +139,6 @@ public class PointsOverview {
         overview.put(PatternNames.YAHTZEE, 0);
 
     }
-
     /**
      * END
      */
