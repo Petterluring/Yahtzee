@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class DieTest {
+class DieTest {
     private final Die die = new Die(6);
 
     @Test

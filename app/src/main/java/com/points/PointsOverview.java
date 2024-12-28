@@ -88,7 +88,7 @@ public class PointsOverview {
         overview.put(PatternNames.FULLHOUSE, 0);
         overview.put(PatternNames.SMALLSTRAIGHT, 0);
         overview.put(PatternNames.LARGESTRAIGHT, 0);
-        overview.put(PatternNames.YAHTZEE, points.Yahtzee());
+        overview.put(PatternNames.YAHTZEE, points.yahtzee());
 
     }
 

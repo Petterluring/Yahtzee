@@ -1,6 +1,7 @@
 package com.points;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 /**
  * This class calculates the different points for a given pattern.
@@ -13,7 +14,7 @@ public class Points {
      * of 5 dice.
      */
     private HashMap<Integer, Integer> faceCounter;
-    private static final String faceValueError = "Dice set must contain face values between 1 and 6";
+    private static final String FACEVALUEERROR = "Dice set must contain face values between 1 and 6";
 
     /**
      * The constructor initializes this class by counting the
@@ -27,7 +28,7 @@ public class Points {
         }
         for (int e : faceValues) {
             if (e < 1 || e > 6) {
-                throw new IllegalArgumentException(faceValueError);
+                throw new IllegalArgumentException(FACEVALUEERROR);
             }
         }
         faceCounter = countFaceValues(faceValues);
@@ -39,22 +40,22 @@ public class Points {
      * @return - Returns a hashmap which keeps track of the occurrences
      */
     private HashMap<Integer, Integer> countFaceValues(int[] faceValues) {
-        HashMap<Integer, Integer> faceCounter = new HashMap<>();
+        HashMap<Integer, Integer> counter = new HashMap<>();
         for (int faceValue : faceValues) {
-            if (faceCounter.containsKey(faceValue)) {
-                faceCounter.put(faceValue, faceCounter.get(faceValue) + 1);
+            if (counter.containsKey(faceValue)) {
+                counter.put(faceValue, counter.get(faceValue) + 1);
             } else {
-                faceCounter.put(faceValue, 1);
+                counter.put(faceValue, 1);
             }
         }
-        return faceCounter;
+        return counter;
     }
 
 
     private int sumOfFaceValues() {
         int sum = 0;
-        for (int key : faceCounter.keySet()) {
-            sum += key * faceCounter.get(key);
+        for (Entry<Integer, Integer> entry : faceCounter.entrySet()) {
+            sum += entry.getKey() * entry.getValue();
         }
         return sum;
     }
@@ -71,11 +72,12 @@ public class Points {
      */
     public int onesToSixes(int faceValue) throws IllegalArgumentException {
         if (faceValue < 1 || faceValue > 6) {
-            throw new IllegalArgumentException(faceValueError);
+            throw new IllegalArgumentException(FACEVALUEERROR);
         }
-        for (int key : faceCounter.keySet()) {
+        for (Entry<Integer, Integer> entry : faceCounter.entrySet()) {
+            int key = entry.getKey();
             if (key == faceValue) {
-                return key * faceCounter.get(key);
+                return key * entry.getValue();
             }
         }
         return 0;
@@ -97,8 +99,9 @@ public class Points {
             return 0;
         }
         int highestFaceValue = 0;
-        for (int key : faceCounter.keySet()) {
-            if (key > highestFaceValue && faceCounter.get(key) > 1) {
+        for(Entry<Integer, Integer> entry: faceCounter.entrySet()) {
+            int key = entry.getKey();
+            if (key > highestFaceValue && entry.getValue() > 1) {
                 highestFaceValue = key;
             }
         }
@@ -110,10 +113,10 @@ public class Points {
             return 0;
         }
         int sum = 0;
-        for (int key : faceCounter.keySet()) {
-            int value = faceCounter.get(key);
+        for (Entry<Integer, Integer> entry : faceCounter.entrySet()) {
+            int value = entry.getValue();
             if (value == 2 || value == 3) {
-                sum += key * 2;
+                sum += entry.getKey() * 2;
             }
         }
         return sum;
@@ -123,9 +126,9 @@ public class Points {
         if (faceCounter.size() >= 4) {
             return 0;
         }
-        for (int key : faceCounter.keySet()) {
-            if (faceCounter.get(key) >= 3) {
-                return key * 3;
+        for (Entry<Integer, Integer> entry : faceCounter.entrySet()) {
+            if (entry.getValue() >= 3) {
+                return entry.getKey() * 3;
             }
         }
         return 0;
@@ -135,9 +138,9 @@ public class Points {
         if (faceCounter.size() > 2) {
             return 0;
         }
-        for (int key : faceCounter.keySet()) {
-            if (faceCounter.get(key) >= 4) {
-                return key * 4;
+        for (Entry<Integer, Integer> entry : faceCounter.entrySet()) {
+            if (entry.getValue() >= 4) {
+                return entry.getKey() * 4;
             }
         }
         return 0;
@@ -162,7 +165,8 @@ public class Points {
         if (faceCounter.size() != 2) {
             return 0;
         }
-        for (int value : faceCounter.values()) {
+        for (Entry<Integer, Integer> entry : faceCounter.entrySet()) {
+            int value = entry.getValue();
             if (value == 2 || value == 3) {
                 return sumOfFaceValues();
             }
@@ -170,7 +174,7 @@ public class Points {
         return 0;
     }
 
-    public int Yahtzee() {
+    public int yahtzee() {
         if (faceCounter.size() != 1) {
             return 0;
         }

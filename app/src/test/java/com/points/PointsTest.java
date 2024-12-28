@@ -139,16 +139,16 @@ class PointsTest {
     void canReturnPointForYahtzee() {
         for (int faceValue = 1; faceValue <= 6; faceValue++) {
             Points points = new Points(new int[] { faceValue, faceValue, faceValue, faceValue, faceValue });
-            assertEquals( 50, points.Yahtzee());
+            assertEquals( 50, points.yahtzee());
         }
         Points points = new Points(new int[] { 1, 2, 3, 4, 5 });
-        assertEquals( 0, points.Yahtzee());
+        assertEquals( 0, points.yahtzee());
         points = new Points(new int[] { 1, 1, 3, 4, 5 });
-        assertEquals( 0, points.Yahtzee());
+        assertEquals( 0, points.yahtzee());
         points = new Points(new int[] { 1, 1, 1, 4, 5 });
-        assertEquals( 0, points.Yahtzee());
+        assertEquals( 0, points.yahtzee());
         points = new Points(new int[] { 1, 1, 1, 1, 5 });
-        assertEquals( 0, points.Yahtzee());
+        assertEquals( 0, points.yahtzee());
         
     }
 

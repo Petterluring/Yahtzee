@@ -35,7 +35,8 @@ public class Die {
 
 
     public int roll() {
-        return random.nextInt(sides) + 1;
+        faceValue = random.nextInt(sides) + 1;
+        return faceValue;
     }
 
     

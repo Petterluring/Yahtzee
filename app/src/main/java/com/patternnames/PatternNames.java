@@ -6,21 +6,21 @@ package com.patternnames;
  * we are referring to different patterns throughout the code.
  */
 public class PatternNames {
-    public final static String ONES = "Ones";
-    public final static String TWOS = "Twos";
-    public final static String THREES = "Threes";
-    public final static String FOURS = "Fours";
-    public final static String FIVES = "Fives";
-    public final static String SIXES = "Sixes";
-    public final static String PAIR = "Pair";
-    public final static String TWOPAIR = "Two Pair";
-    public final static String THREEOFAKIND = "3 of a kind";
-    public final static String FOUROFAKIND = "4 of a kind";
-    public final static String FULLHOUSE = "Full House";
-    public final static String SMALLSTRAIGHT = "Sm Straight";
-    public final static String LARGESTRAIGHT = "Lg Straight";
-    public final static String YAHTZEE = "YAHTZEE";
-    public final static String CHANCE = "Chance";
+    public static final String ONES = "Ones";
+    public static final String TWOS = "Twos";
+    public static final String THREES = "Threes";
+    public static final String FOURS = "Fours";
+    public static final String FIVES = "Fives";
+    public static final String SIXES = "Sixes";
+    public static final String PAIR = "Pair";
+    public static final String TWOPAIR = "Two Pair";
+    public static final String THREEOFAKIND = "3 of a kind";
+    public static final String FOUROFAKIND = "4 of a kind";
+    public static final String FULLHOUSE = "Full House";
+    public static final String SMALLSTRAIGHT = "Sm Straight";
+    public static final String LARGESTRAIGHT = "Lg Straight";
+    public static final String YAHTZEE = "YAHTZEE";
+    public static final String CHANCE = "Chance";
 
     private PatternNames() {}
     
