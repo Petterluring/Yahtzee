@@ -1,6 +1,6 @@
-package com.player;
+package com.backend.player;
 
-import com.die.Die;
+import com.backend.die.Die;
 
 /**
  * The player class is responsible for representing a player,

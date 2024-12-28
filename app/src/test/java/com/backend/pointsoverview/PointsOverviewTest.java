@@ -1,12 +1,12 @@
-package com.pointsoverview;
+package com.backend.pointsoverview;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.patternnames.PatternNames;
-import com.points.Points;
-import com.points.PointsOverview;
+import com.backend.patternnames.PatternNames;
+import com.backend.points.Points;
+import com.backend.points.PointsOverview;
 
 class PointsOverviewTest {
     

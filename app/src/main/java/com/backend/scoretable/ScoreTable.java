@@ -1,6 +1,6 @@
-package com.scoretable;
+package com.backend.scoretable;
 
-import com.player.Player;
+import com.backend.player.Player;
 
 /**
  * The score table class keeps track of a players points for the different

@@ -1,11 +1,11 @@
-package com.scoretable;
+package com.backend.scoretable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.patternnames.PatternNames;
-import com.player.Player;
+import com.backend.patternnames.PatternNames;
+import com.backend.player.Player;
 
 class ScoreTableTest {
     private final ScoreTable scoreTable = new ScoreTable(

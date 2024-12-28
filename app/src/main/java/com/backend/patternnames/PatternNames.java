@@ -1,4 +1,4 @@
-package com.patternnames;
+package com.backend.patternnames;
 
 /**
  * This class defines the names of the different patterns globally.

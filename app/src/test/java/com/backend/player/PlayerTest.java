@@ -1,5 +1,5 @@
 
-package com.player;
+package com.backend.player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.die.Die;
+import com.backend.die.Die;
 
 class PlayerTest {
     private final Player player = new Player("Richard", "Samson");

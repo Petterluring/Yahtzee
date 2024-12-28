@@ -1,8 +1,8 @@
-package com.scoretable;
+package com.backend.scoretable;
 
 import java.util.HashMap;
 
-import com.patternnames.PatternNames;
+import com.backend.patternnames.PatternNames;
 
 /**
  * This class keeps track of the scores of one player. The class

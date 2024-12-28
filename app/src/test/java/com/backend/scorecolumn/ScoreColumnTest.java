@@ -1,12 +1,12 @@
-package com.scorecolumn;
+package com.backend.scorecolumn;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import com.patternnames.PatternNames;
-import com.scoretable.ScoreColumn;
+import com.backend.patternnames.PatternNames;
+import com.backend.scoretable.ScoreColumn;
 
 class ScoreColumnTest {
     private final ScoreColumn scoreColumn = new ScoreColumn(1, "PG");

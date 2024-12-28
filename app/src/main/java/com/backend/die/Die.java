@@ -1,4 +1,4 @@
-package com.die;
+package com.backend.die;
 
 import java.util.Random;
 

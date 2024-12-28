@@ -1,8 +1,8 @@
-package com.points;
+package com.backend.points;
 
 import java.util.HashMap;
 
-import com.patternnames.PatternNames;
+import com.backend.patternnames.PatternNames;
 
 /**
  * This class creates an overview of all the different patterns with

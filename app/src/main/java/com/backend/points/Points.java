@@ -1,4 +1,4 @@
-package com.points;
+package com.backend.points;
 
 import java.util.HashMap;
 import java.util.Map.Entry;
