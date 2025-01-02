@@ -1,8 +1,10 @@
 package app;
 
-import com.frontend.scenes.Welcome;
+import com.frontend.die.DieGraphics;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -10,8 +12,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        Welcome welcome = new Welcome(500, 500);
-        stage.setScene(welcome.getScene());
+        DieGraphics die = new DieGraphics(100.0, "WHITE", "BLACK");
+        Scene scene = new Scene(die.getDie(), 500, 500,  Paint.valueOf("BLACK"));
+        stage.setScene(scene);
         stage.show();
     }
 
