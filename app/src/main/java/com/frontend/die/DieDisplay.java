@@ -11,10 +11,11 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 /*
- * This class is responsible for creating 2-dimensional dice objects.
+ * This class creates 2-dimensional dice objects.
  */
-public class DieGraphics {
+public class DieDisplay {
     private StackPane die;
+    private final Rectangle DIEBASE;
     private final Circle TOPLEFT;
     private final Circle TOPRIGHT;
     private final Circle MIDLEFT;
@@ -27,11 +28,14 @@ public class DieGraphics {
     private static final Random random = new Random();
 
     /**
-     * Builds the die
+     * Builds the die with a certain lenght of its sides and color. 
+     * @param sideLen - Chosen side lenght
+     * @param dieColor - Chosen color on die
+     * @param dotColor - Chosen color on the dots representing face values
      */
-    public DieGraphics(Double sideLen, String dieColor, String dotColor) {
+    public DieDisplay(Double sideLen, String dieColor, String dotColor) {
         // Init side
-        Rectangle rec = new Rectangle(sideLen, sideLen, Paint.valueOf(dieColor));
+        DIEBASE = new Rectangle(sideLen, sideLen, Paint.valueOf(dieColor));
         double recArea = sideLen * sideLen;
 
         // Init dots
@@ -63,7 +67,7 @@ public class DieGraphics {
         rows.setSpacing(CONSTANTSPACINGBETWEENDOTS);
 
         // Stacking objects
-        die = new StackPane(rec, rows);
+        die = new StackPane(DIEBASE, rows);
         setDie(random.nextInt(6) + 1);
     }
 
@@ -75,22 +79,22 @@ public class DieGraphics {
     public void setDie(int faceValue) throws IllegalArgumentException {
         switch (faceValue) {
             case 1:
-                setOne();
+                displayOne();
                 return;
             case 2:
-                setTwo();
+                displayTwo();
                 return;
             case 3:
-                setThree();
+                displayThree();
                 return;
             case 4:
-                setFour();
+                displayFour();
                 return;
             case 5:
-                setFive();
+                displayFive();
                 return;
             case 6:
-                setSix();
+                displaySix();
                 return;
             default:
                 throw new IllegalArgumentException("faceValue must be in the range 1 to 6");
@@ -98,7 +102,7 @@ public class DieGraphics {
     }
 
 
-    private void setOne() {
+    private void displayOne() {
         TOPLEFT.setVisible(false);
         TOPRIGHT.setVisible(false);
         MIDLEFT.setVisible(false);
@@ -109,7 +113,7 @@ public class DieGraphics {
 
     }
 
-    private void setTwo() {
+    private void displayTwo() {
         TOPLEFT.setVisible(true);
         TOPRIGHT.setVisible(false);
         MIDLEFT.setVisible(false);
@@ -119,7 +123,7 @@ public class DieGraphics {
         BOTTOMRIGHT.setVisible(true);
     }
 
-    private void setThree() {
+    private void displayThree() {
         TOPLEFT.setVisible(true);
         TOPRIGHT.setVisible(false);
         MIDLEFT.setVisible(false);
@@ -129,7 +133,7 @@ public class DieGraphics {
         BOTTOMRIGHT.setVisible(true);
     }
 
-    private void setFour() {
+    private void displayFour() {
         TOPLEFT.setVisible(true);
         TOPRIGHT.setVisible(true);
         MIDLEFT.setVisible(false);
@@ -139,7 +143,7 @@ public class DieGraphics {
         BOTTOMRIGHT.setVisible(true);
     }
 
-    private void setFive() {
+    private void displayFive() {
         TOPLEFT.setVisible(true);
         TOPRIGHT.setVisible(true);
         MIDLEFT.setVisible(false);
@@ -149,7 +153,7 @@ public class DieGraphics {
         BOTTOMRIGHT.setVisible(true);
     }
 
-    private void setSix() {
+    private void displaySix() {
         TOPLEFT.setVisible(true);
         TOPRIGHT.setVisible(true);
         MIDLEFT.setVisible(true);
@@ -157,6 +161,10 @@ public class DieGraphics {
         MIDRIGHT.setVisible(true);
         BOTTOMLEFT.setVisible(true);
         BOTTOMRIGHT.setVisible(true);
+    }
+
+    public void setDieColor(String color) {
+        DIEBASE.setFill(Paint.valueOf(color));
     }
 
     public StackPane getDie() {
