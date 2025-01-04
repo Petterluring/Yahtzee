@@ -1,10 +1,11 @@
 package app;
 
-import com.frontend.die.DieAnimation;
-import com.frontend.die.DieDisplay;
+import com.frontend.scenes.Welcome;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.paint.Paint;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -12,13 +13,24 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        DieDisplay die = new DieDisplay(100.0, "WHITE", "BLACK");
-        Scene scene = new Scene(die.getDie(), 500, 500,  Paint.valueOf("BLACK"));
+
+        /* 
+        StackPane root = new StackPane();
+
+        // Create a scene with black background
+        Scene scene = new Scene(root, 300, 200, Color.BLACK);
+
+        stage.setTitle("Scene Background Example");
         stage.setScene(scene);
-        DieAnimation.dieRoll(5, 50.0, 12, die);
         stage.show();
-        
+        */
+        Welcome welcomeScene = new Welcome(1000, 600);
+        stage.setScene(welcomeScene.getScene());
+        stage.show();
     }
+
+        
+        
 
     public static void main(String[] args) {
         launch(args);

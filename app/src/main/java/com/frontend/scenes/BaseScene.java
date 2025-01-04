@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 
 /**
  * A base scene which the other scenes extends.
@@ -19,19 +20,19 @@ public abstract class BaseScene {
         }
         this.width = width;
         this.height = height;
-        this.scene = buildScene();
+        buildScene();
     }
 
     /**
      * Building a basic scene with a label in the middle. The extending classes
      * should overrite this method when building their scene.
      */
-    private Scene buildScene() {
-        HBox hBox = new HBox();
-        hBox.setAlignment(Pos.CENTER);
+    protected void buildScene() {
         Label label = new Label("This is an abstract scene");
-        hBox.getChildren().add(label);
-        return new Scene(hBox, width, height);
+        label.setFont(Font.font("Times new roman", 20));
+        HBox hBox = new HBox(label);
+        hBox.setAlignment(Pos.CENTER);
+        scene = new Scene(hBox, width, height);
     }
 
     public Scene getScene() {
