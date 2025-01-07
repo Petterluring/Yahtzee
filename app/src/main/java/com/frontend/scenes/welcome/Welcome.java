@@ -1,26 +1,13 @@
-package com.frontend.scenes;
+package com.frontend.scenes.welcome;
 
 
-import javafx.application.ColorScheme;
+import com.frontend.scenes.BaseScene;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -31,6 +18,7 @@ public class Welcome extends BaseScene {
     private TextField lastName;
     private Button add;
     private Button start;
+    private TextField messagePrompt;
     
 
     public Welcome(int width, int height) {
@@ -47,9 +35,6 @@ public class Welcome extends BaseScene {
         AnchorPane anchorPane = new AnchorPane(
             welcomeLabel, addPlayerWindow
         );
-        anchorPane.setBackground(new Background(
-            new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, null))
-            );
 
         // Positoning
         AnchorPane.setLeftAnchor(welcomeLabel, (width - welcomeLabel.getPrefWidth()) / 2);
@@ -73,7 +58,7 @@ public class Welcome extends BaseScene {
 
         // Set the background image to the Pane
         anchorPane.setBackground(new Background(backgroundImage));
-        scene = new Scene(anchorPane, width, height, Color.BLACK);
+        scene = new Scene(anchorPane, width, height);
 
 
     }
@@ -118,9 +103,10 @@ public class Welcome extends BaseScene {
         
         // Add buttons
         initAddButton();
+        initStartButton();
         
         // Adding buttons and text fields in vBox
-        VBox vBox = new VBox(textFields, add);
+        VBox vBox = new VBox(textFields, add, start);
         vBox.setSpacing(10);
         vBox.setAlignment(Pos.CENTER);
 
@@ -185,9 +171,5 @@ public class Welcome extends BaseScene {
         )));
         start.setBorder(new Border(new BorderStroke(
             Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(20), null)));
-    }
-
-    private void addEventHandlers() {
-
     }
 }

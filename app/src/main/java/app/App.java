@@ -1,6 +1,6 @@
 package app;
 
-import com.frontend.scenes.Welcome;
+import com.frontend.scenes.welcome.Welcome;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

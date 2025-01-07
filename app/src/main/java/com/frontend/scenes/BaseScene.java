@@ -1,5 +1,7 @@
 package com.frontend.scenes;
 
+import com.viewmodels.BaseViewModel;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -13,6 +15,7 @@ public abstract class BaseScene {
     protected int width;
     protected int height;
     protected Scene scene;
+    protected BaseViewModel viewModel;
 
     public BaseScene(int width, int height) throws IllegalArgumentException {
         if (width <= 0 || height <= 0) {
