@@ -1,11 +1,15 @@
 package com.frontend.scenes.welcome;
 
 
+import com.backend.player.Player;
 import com.frontend.scenes.BaseScene;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -30,10 +34,11 @@ public class Welcome extends BaseScene {
         // Init all components
         StackPane welcomeLabel = buildWelcomeLabel();
         StackPane addPlayerWindow = buildAddPlayerWindow();
+        VBox table = buildPlayerTable();
 
         // Add components in anchorpane
         AnchorPane anchorPane = new AnchorPane(
-            welcomeLabel, addPlayerWindow
+            welcomeLabel, addPlayerWindow, table
         );
 
         // Positoning
@@ -43,6 +48,10 @@ public class Welcome extends BaseScene {
         AnchorPane.setLeftAnchor(addPlayerWindow, ((width - addPlayerWindow.getPrefWidth()) / 2));
         AnchorPane.setTopAnchor(addPlayerWindow, ((width - addPlayerWindow.getPrefHeight()) / 2));
         AnchorPane.setBottomAnchor(addPlayerWindow, ((width - addPlayerWindow.getPrefHeight()) / 2));
+
+        AnchorPane.setTopAnchor(table, 400.0);
+        AnchorPane.setRightAnchor(table, ((width - table.getPrefWidth()) / 2));
+        AnchorPane.setLeftAnchor(table, ((width - table.getPrefWidth()) / 2));
 
 
         // Create background
@@ -97,7 +106,6 @@ public class Welcome extends BaseScene {
 
         // Add background
         Rectangle rec = new Rectangle(1000 * 0.4, 600 * 0.4, Color.rgb(255, 255, 255, 0.9));
-
         rec.setArcHeight(20);
         rec.setArcWidth(20);
         
@@ -171,5 +179,47 @@ public class Welcome extends BaseScene {
         )));
         start.setBorder(new Border(new BorderStroke(
             Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(20), null)));
+    }
+
+    private VBox buildPlayerTable() {
+        TableView<Player> table = new TableView<>();
+
+        // Column names
+        String firstName = "First name";
+        String lastName = "Last name";
+
+        // Building columns
+        TableColumn<Player, String> firstNameCol = new TableColumn<>(firstName);
+        TableColumn<Player, String> lastNameCol = new TableColumn<>(lastName);
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
+        int widht = 100;
+        firstNameCol.setPrefWidth(widht);
+        lastNameCol.setPrefWidth(widht);
+
+        // Adding columns
+        table.getColumns().add(firstNameCol);
+        table.getColumns().add(lastNameCol);
+
+        table.setPrefSize(firstNameCol.getPrefWidth() + lastNameCol.getPrefWidth(), 200);
+
+        // Test data
+        ObservableList<Player> data = FXCollections.observableArrayList(
+            new Player("Petter", "Gustafsson")
+        );
+        table.setItems(data);
+
+        table.setBackground(new Background(
+            new BackgroundFill(Color.rgb(255, 255, 255, 0.9),
+            new CornerRadii(20), 
+            null)
+        ));
+        
+        VBox vBox = new VBox(table);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPrefSize(table.getPrefWidth(), 100);
+
+        return vBox;
     }
 }
